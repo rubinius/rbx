@@ -1,0 +1,12 @@
+name: rbx CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    uses: rubinius/.github/workflows/ci.yml@main
+    with:
+      build-target: rbx
