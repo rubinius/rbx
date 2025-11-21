@@ -1,29 +1,34 @@
 EXES := rubinius/bin/rbx
 DIST := dist/*
+CXX := clang++
 
 # Allow override (e.g., `make VERSION=1.2.3`)
 VERSION ?= $(shell (git describe --tags 2>/dev/null || echo "develop") | sed 's/^v//')
 REVISION ?= $(shell git rev-parse --short HEAD)
 
-.PHONY: help setup config install release test clean all
+.PHONY: help setup config build install release test clean all
 
-all:
-	@echo Building everything
+all: setup config build test
 
 ##@ Dependencies
 setup: ## Clone all components
 	@echo Setting up all components
+	@git submodule update --init --recursive
+	@./.build2/scripts/setup-build2.sh rbx
 
 config: ## Configure
 	@echo Configuring all components
+	@./.build2/scripts/config-build2.sh rbx
 
 ##@ Devolpment
 build: ## Build all components
 	@echo Building all components
+	b
 
 ##@ Testing
 test: ## Run the tests
 	@echo Running all tests
+	b test
 
 ##@ Maintenance
 clean: ## Remove all build artifacts
