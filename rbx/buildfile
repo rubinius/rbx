@@ -1,5 +1,5 @@
 libs =
-#import libs += libhello%lib{hello}
+import libs += cli11%lib{cli11}
 
 exe{rbx}: {hxx ixx txx cxx}{**} $libs testscript
 

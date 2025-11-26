@@ -3,11 +3,12 @@ name: rbx
 version: 0.1.0-a.0.z
 language: c++
 summary: rbx C++ executable
-license: other: proprietary ; Not free/open source.
+license: BSD 3-clause
 description-file: README.md
-url: https://example.org/rbx
+url: https://github.com/rubinius/rbx
 email: brixen@gmail.com
-#build-error-email: brixen@gmail.com
+build-error-email: brixen@gmail.com
+
 depends: * build2 >= 0.16.0
 depends: * bpkg >= 0.16.0
-#depends: libhello ^1.0.0
+depends: cli11 ^2.2.0
