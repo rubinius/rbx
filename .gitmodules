@@ -1,3 +1,0 @@
-[submodule ".build2"]
-	path = .build2
-	url = https://github.com/rubinius/.build2.git
