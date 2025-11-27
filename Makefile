@@ -1,5 +1,7 @@
 PROJ = rbx
 
+SUBMODULE_PATH = ./.build2/scripts
+
 # Allow override (e.g., `make VERSION=1.2.3`)
 VERSION ?= $(shell (git describe --tags 2>/dev/null || echo "develop") | sed 's/^v//')
 REVISION ?= $(shell git rev-parse --short HEAD)
@@ -9,8 +11,11 @@ REVISION ?= $(shell git rev-parse --short HEAD)
 all: setup config build test
 
 ##@ Dependencies
-setup: ## Clone all components
+$(SUBMODULE_PATH):
+	@echo Syncing git submodule
 	@git submodule update --init --recursive
+
+setup: $(SUBMODULE_PATH) ## Clone all components
 	@./.build2/scripts/setup-build2.sh $(PROJ)
 
 config: ## Configure
