@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function setup_build2_usage {
   cat >&2 <<-EOM
@@ -9,10 +9,12 @@ EOM
   exit 1
 }
 
-if [[ -z "$1" ]]; then
+if [[ $# -lt 1 ]]; then
   setup_build2_usage
 fi
 
-echo "Setting up build2 for $1"
+project="$1"
+
+echo "Setting up build2 for $project"
 
 
