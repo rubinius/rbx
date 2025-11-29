@@ -1,4 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+__dir__="$(cd "$(dirname "$0")" && pwd)"
+
+# shellcheck source=scripts/common.sh
+source "$__dir__/common.sh"
 
 function config_build2_usage {
   cat >&2 <<-EOM
@@ -9,18 +14,20 @@ EOM
   exit 1
 }
 
-if [[ -z "$1" ]]; then
+if [[ $# -lt 1 ]]; then
   config_build2_usage
 fi
 
-echo "Configuring build2 for $1"
+project="$1"
 
-function config_check {
+echo "Configuring build2 for $project"
+
+function build2_config_check {
   bdep status @release > /dev/null 2>&1
 }
 
-if ! config_check; then
-  bdep init -C "../.build2/configs/$1-release" \
+if ! build2_config_check; then
+  bdep init --wipe -C "$(build2_release_name "$project")" \
     @release \
     cc config.cxx=clang++
 fi

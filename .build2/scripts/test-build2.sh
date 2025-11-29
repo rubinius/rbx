@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function test_build2_usage {
   cat >&2 <<-EOM
@@ -9,10 +9,11 @@ EOM
   exit 1
 }
 
-if [[ -z "$1" ]]; then
+if [[ $# -lt 1 ]]; then
   test_build2_usage
 fi
 
-echo "Testing $1"
+project="$1"
 
+echo "Testing $project"
 b test
