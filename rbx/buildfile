@@ -1,5 +1,5 @@
-libs = cli11%lib{cli11} libpypeg%lib{libpypeg}
-import libs += libs
+import libs = cli11%lib{cli11}
+import libs += libpypeg%lib{pypeg}
 
 exe{rbx}: {hxx ixx txx cxx}{**} $libs testscript
 
