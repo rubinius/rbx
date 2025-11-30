@@ -10,3 +10,8 @@ location: https://github.com/rubinius/cli11#master
 role: prerequisite
 type: git
 location: https://github.com/rubinius/libpypeg#main
+
+:
+role: prerequisite
+type: git
+location: https://github.com/rubinius/prism#main

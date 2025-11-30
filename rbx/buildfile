@@ -1,5 +1,6 @@
 import libs = cli11%lib{cli11}
 import libs += libpypeg%lib{pypeg}
+import libs += libprism%lib{prism}
 
 exe{rbx}: {hxx ixx txx cxx}{**} $libs testscript
 
