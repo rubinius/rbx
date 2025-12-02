@@ -1,4 +1,5 @@
 import libs = cli11%lib{cli11}
+import libs += pegtl%lib{pegtl}
 import libs += libpypeg%lib{pypeg}
 import libs += libprism%lib{prism}
 

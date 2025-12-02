@@ -12,5 +12,6 @@ build-error-email: brixen@gmail.com
 depends: * build2 >= 0.16.0
 depends: * bpkg >= 0.16.0
 depends: cli11 ^2.2.0
+depends: pegtl ^3.2.8
 depends: libpypeg ^3.15.0
 depends: libprism ^1.5.9
